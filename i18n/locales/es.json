@@ -1,0 +1,19 @@
+{
+  "welcome": "Bienvenido",
+  "theme": {
+    "light": "Claro",
+    "dark": "Oscuro",
+    "toggle": "Cambiar tema"
+  },
+  "language": {
+    "select": "Seleccionar idioma"
+  },
+  "common": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito"
+  }
+}

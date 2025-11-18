@@ -1,0 +1,19 @@
+{
+  "welcome": "Welcome",
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "select": "Select language"
+  },
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  }
+}

@@ -1,0 +1,33 @@
+<script setup lang="ts">
+import ClickSpark from '~/components/Animations/ClickSpark.vue'
+
+const { initTheme, theme } = useTheme()
+
+const sparkColor = computed(() => {
+  return theme.value === 'dark' ? '#ffffff' : '#000000'
+})
+
+onMounted(() => {
+  initTheme()
+})
+</script>
+
+<template>
+  <VueLenis root>
+    <ClickSpark
+      :spark-color="sparkColor"
+      :spark-size="12"
+      :spark-radius="25"
+      :spark-count="12"
+      :duration="600"
+      easing="ease-out"
+      :extra-scale="1.2"
+    >
+      <div>
+        <NuxtRouteAnnouncer />
+        <ThemeToggle />
+        <NuxtPage />
+      </div>
+    </ClickSpark>
+  </VueLenis>
+</template>
