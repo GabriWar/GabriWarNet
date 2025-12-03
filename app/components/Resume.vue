@@ -1,19 +1,26 @@
 <script setup lang="ts">
-const handleClick = (...cssClasses: string[]) => {
-  cssClasses.forEach((cssClass) => {
-    const element = document.querySelector(`.${cssClass}`)
-    if (!element) return
+import { reactive } from 'vue'
+import DecryptedText from './DecryptedText.vue'
 
-    const visible = element.getAttribute('data-visible')
-    if (visible === '0') {
-      element.setAttribute('data-visible', '1')
-    } else if (visible === '1') {
-      element.setAttribute('data-visible', '0')
-      setTimeout(() => {
-        (element as HTMLElement).style.display = 'block'
-      }, 5000)
-    }
-  })
+const visibility = reactive({
+  resume: false,
+  webdev: false,
+  linux: false,
+  education: false,
+  projects: false
+})
+
+const toggle = (section: keyof typeof visibility) => {
+  visibility[section] = !visibility[section]
+}
+
+const animProps = {
+  speed: 1,
+  sequential: true,
+  useOriginalCharsOnly: false,
+  maxIterations: 70,
+  animateOn: 'view' as const,
+  typewriter: true
 }
 </script>
 
@@ -22,83 +29,90 @@ const handleClick = (...cssClasses: string[]) => {
     <div class="resume-section" data-visible="1">
       <a
         class="txtanim link-color"
-        @click="handleClick('resumetxt')"
+        @click="toggle('resume')"
       >
         Resume
       </a>
-      <p class="resumetxt" data-visible="0">
-        Hello, I'm Gabriel, a passionate Full Stack Developer currently
-        studying Computer Science. With a deep-rooted love for Linux, I
-        consider myself a power user, I love libre and open-source software.
-        My curiosity extends beyond coding, I'm also proficient in image
-        manipulation, And my love for debugging apps and modding Android
-        phones adds to my technical skills.
+      <p v-if="visibility.resume" class="resumetxt">
+        <DecryptedText
+          text="Hello, I'm Gabriel, a passionate Full Stack Developer currently studying Computer Science. With a deep-rooted love for Linux, I consider myself a power user, I love libre and open-source software. My curiosity extends beyond coding, I'm also proficient in image manipulation, And my love for debugging apps and modding Android phones adds to my technical skills."
+          v-bind="animProps"
+        />
       </p>
     </div>
 
     <div class="resume-section" data-visible="1">
       <a
         class="txtanim link-color-web"
-        @click="handleClick('resumeWebDev')"
+        @click="toggle('webdev')"
       >
         WebDev
       </a>
-      <p class="resumeWebDev" data-visible="0">
-        Proficient in both front-end and back-end technologies, experienced
-        with HTML, CSS, JavaScript (<NuxtLink class="txtanim link-color-react" to="/links/3">React/Next</NuxtLink>,
-        <NuxtLink class="txtanim link-color-vue" to="/links/3">Vue/Nuxt</NuxtLink>,
-        <NuxtLink class="txtanim link-color-rust" to="/links/5">Svelte/SvelteKit</NuxtLink>), and server-side scripting languages (<NuxtLink class="txtanim link-color-projects" to="/links/2">Node.js</NuxtLink>,
-        <NuxtLink class="txtanim link-color-cpp" to="/links/4">C++</NuxtLink>,
-        <NuxtLink class="txtanim link-color-rust" to="/links/5">Rust</NuxtLink>,
-        <NuxtLink class="txtanim link-color-py" to="/links/6">Python</NuxtLink>).
+      <p v-if="visibility.webdev" class="resumeWebDev">
+        <DecryptedText text="Proficient in both front-end and back-end technologies, experienced with HTML, CSS, JavaScript (" v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-react" to="/links/3"><DecryptedText text="React/Next" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-vue" to="/links/3"><DecryptedText text="Vue/Nuxt" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Svelte/SvelteKit" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text="), and server-side scripting languages (" v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-projects" to="/links/2"><DecryptedText text="Node.js" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C++" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=")." v-bind="animProps" />
       </p>
     </div>
 
     <div class="resume-section" data-visible="1">
       <a
         class="txtanim link-color-linux"
-        @click="handleClick('resumelinux')"
+        @click="toggle('linux')"
       >
         Linux
       </a>
-      <p class="resumelinux" data-visible="0">
-        Proficient with the
-        <NuxtLink class="txtanim link-color-linux" to="/links/7">Linux</NuxtLink>
-        command line operation, comfortable with
-        <NuxtLink class="txtanim link-color" to="/links/7">Shell Scripting</NuxtLink> and automation,
-        adept at optimizing system performance and troubleshooting.
+      <p v-if="visibility.linux" class="resumelinux">
+        <DecryptedText text="Proficient with the " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-linux" to="/links/7"><DecryptedText text="Linux" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=" command line operation, comfortable with " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color" to="/links/7"><DecryptedText text="Shell Scripting" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=" and automation, adept at optimizing system performance and troubleshooting." v-bind="animProps" />
       </p>
     </div>
 
     <div class="resume-section" data-visible="1">
       <a
         class="txtanim link-color-edu"
-        @click="handleClick('resumeedu')"
+        @click="toggle('education')"
       >
         Education
       </a>
-      <p class="resumeedu" data-visible="0">
-        Currently pursuing a degree in Computer Science, I am dedicated to
-        expanding my knowledge and staying at the forefront of technology. I
-        also speak Portuguese (native), English (fluent), German (learning).
+      <p v-if="visibility.education" class="resumeedu">
+        <DecryptedText
+          text="Currently pursuing a degree in Computer Science, I am dedicated to expanding my knowledge and staying at the forefront of technology. I also speak Portuguese (native), English (fluent), German (learning)."
+          v-bind="animProps"
+        />
       </p>
     </div>
 
     <div class="resume-section" data-visible="1">
       <a
         class="txtanim link-color-projects"
-        @click="handleClick('resumeproj')"
+        @click="toggle('projects')"
       >
         Projects
       </a>
-      <p class="resumeproj" data-visible="0">
-        <NuxtLink class="txtanim link-color-projects" to="/links/1">GitHub</NuxtLink>
-        <NuxtLink class="txtanim link-color-js" to="/links/2">JavaScript</NuxtLink>
-        <NuxtLink class="txtanim link-color-py" to="/links/6">Python</NuxtLink>
-        <NuxtLink class="txtanim link-color-cpp" to="/links/4">C++</NuxtLink>
-        <NuxtLink class="txtanim link-color-rust" to="/links/5">Rust</NuxtLink>
-        <NuxtLink class="txtanim link-color-react" to="/links/3">React</NuxtLink>
-        <NuxtLink class="txtanim link-color-vue" to="/links/3">Vue</NuxtLink>
+      <p v-if="visibility.projects" class="resumeproj">
+        <NuxtLink class="txtanim link-color-projects" to="/links/1"><DecryptedText text="GitHub" v-bind="animProps" /></NuxtLink>
+        <NuxtLink class="txtanim link-color-js" to="/links/2"><DecryptedText text="JavaScript" v-bind="animProps" /></NuxtLink>
+        <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
+        <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C++" v-bind="animProps" /></NuxtLink>
+        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
+        <NuxtLink class="txtanim link-color-react" to="/links/3"><DecryptedText text="React" v-bind="animProps" /></NuxtLink>
+        <NuxtLink class="txtanim link-color-vue" to="/links/3"><DecryptedText text="Vue" v-bind="animProps" /></NuxtLink>
       </p>
     </div>
   </div>
@@ -145,22 +159,6 @@ const handleClick = (...cssClasses: string[]) => {
   line-height: 1.6;
   color: var(--color-text-secondary);
   margin-top: var(--spacing-sm);
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.5s ease-out, opacity 0.4s ease-out, margin-top 0.4s ease-out;
-}
-
-.resume-section > p[data-visible="1"] {
-  max-height: 500px;
-  opacity: 1;
-  margin-top: var(--spacing-sm);
-}
-
-.resume-section > p[data-visible="0"] {
-  max-height: 0;
-  opacity: 0;
-  margin-top: 0;
 }
 
 .resumeproj a {
