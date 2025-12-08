@@ -26,6 +26,8 @@ onMounted(() => {
       <div>
         <NuxtRouteAnnouncer />
         <ThemeToggle />
+        <BackToTop />
+        <LoadingScreen />
         <NuxtPage />
       </div>
     </ClickSpark>

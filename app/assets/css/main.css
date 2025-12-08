@@ -187,12 +187,10 @@ body {
 .link-color {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
   cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--link-color) calc(50% - var(--bg-small-size)),
-    var(--link-color) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--link-color) calc(50% - var(--bg-small-size)),
+      var(--link-color) 100%);
   transition: background-size, background-position var(--time) ease-in-out 0s;
   background-size: 100% 200%;
   background-position: 0 0;
@@ -200,23 +198,19 @@ body {
 }
 
 .link-color:hover {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color) 100%);
   background-position: 0 100%;
 }
 
 .link-static {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color) 100%);
   background-position: 0 100%;
   cursor: default;
 }
@@ -224,12 +218,10 @@ body {
 .link-color-linux {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
   cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--link-color-linux) calc(50% - var(--bg-small-size)),
-    var(--link-color-linux) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--link-color-linux) calc(50% - var(--bg-small-size)),
+      var(--link-color-linux) 100%);
   transition: background-size, background-position var(--time) ease-in-out 0s;
   background-size: 100% 200%;
   background-position: 0 0;
@@ -237,22 +229,18 @@ body {
 }
 
 .link-color-linux:hover {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-linux) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-linux) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-linux) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-linux) 100%);
   background-position: 0 100%;
 }
 
 .link-static-linux {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-linux) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-linux) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-linux) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-linux) 100%);
   background-position: 0 100%;
   cursor: default;
 }
@@ -260,12 +248,10 @@ body {
 .link-color-web {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
   cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--link-color-web) calc(50% - var(--bg-small-size)),
-    var(--link-color-web) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--link-color-web) calc(50% - var(--bg-small-size)),
+      var(--link-color-web) 100%);
   transition: background-size, background-position var(--time) ease-in-out 0s;
   background-size: 100% 200%;
   background-position: 0 0;
@@ -273,22 +259,18 @@ body {
 }
 
 .link-color-web:hover {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-web) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-web) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-web) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-web) 100%);
   background-position: 0 100%;
 }
 
 .link-static-web {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-web) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-web) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-web) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-web) 100%);
   background-position: 0 100%;
   cursor: default;
 }
@@ -296,12 +278,10 @@ body {
 .link-color-js {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
   cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--link-color-js) calc(50% - var(--bg-small-size)),
-    var(--link-color-js) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--link-color-js) calc(50% - var(--bg-small-size)),
+      var(--link-color-js) 100%);
   transition: background-size, background-position var(--time) ease-in-out 0s;
   background-size: 100% 200%;
   background-position: 0 0;
@@ -309,22 +289,18 @@ body {
 }
 
 .link-color-js:hover {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-js) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-js) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-js) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-js) 100%);
   background-position: 0 100%;
 }
 
 .link-static-js {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-js) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-js) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-js) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-js) 100%);
   background-position: 0 100%;
   cursor: default;
 }
@@ -332,12 +308,10 @@ body {
 .link-color-edu {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
   cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--link-color-edu) calc(50% - var(--bg-small-size)),
-    var(--link-color-edu) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--link-color-edu) calc(50% - var(--bg-small-size)),
+      var(--link-color-edu) 100%);
   transition: background-size, background-position var(--time) ease-in-out 0s;
   background-size: 100% 200%;
   background-position: 0 0;
@@ -345,22 +319,18 @@ body {
 }
 
 .link-color-edu:hover {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-edu) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-edu) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-edu) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-edu) 100%);
   background-position: 0 100%;
 }
 
 .link-static-edu {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-edu) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-edu) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-edu) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-edu) 100%);
   background-position: 0 100%;
   cursor: default;
 }
@@ -368,12 +338,10 @@ body {
 .link-color-rust {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
   cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--link-color-rust) calc(50% - var(--bg-small-size)),
-    var(--link-color-rust) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--link-color-rust) calc(50% - var(--bg-small-size)),
+      var(--link-color-rust) 100%);
   transition: background-size, background-position var(--time) ease-in-out 0s;
   background-size: 100% 200%;
   background-position: 0 0;
@@ -381,22 +349,18 @@ body {
 }
 
 .link-color-rust:hover {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-rust) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-rust) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-rust) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-rust) 100%);
   background-position: 0 100%;
 }
 
 .link-static-rust {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-rust) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-rust) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-rust) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-rust) 100%);
   background-position: 0 100%;
   cursor: default;
 }
@@ -404,12 +368,10 @@ body {
 .link-color-react {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
   cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--link-color-react) calc(50% - var(--bg-small-size)),
-    var(--link-color-react) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--link-color-react) calc(50% - var(--bg-small-size)),
+      var(--link-color-react) 100%);
   transition: background-size, background-position var(--time) ease-in-out 0s;
   background-size: 100% 200%;
   background-position: 0 0;
@@ -417,22 +379,18 @@ body {
 }
 
 .link-color-react:hover {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-react) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-react) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-react) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-react) 100%);
   background-position: 0 100%;
 }
 
 .link-static-react {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-react) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-react) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-react) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-react) 100%);
   background-position: 0 100%;
   cursor: default;
 }
@@ -440,12 +398,10 @@ body {
 .link-color-vue {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
   cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--color-vue) calc(50% - var(--bg-small-size)),
-    var(--color-vue) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--color-vue) calc(50% - var(--bg-small-size)),
+      var(--color-vue) 100%);
   transition: background-size, background-position var(--time) ease-in-out 0s;
   background-size: 100% 200%;
   background-position: 0 0;
@@ -453,22 +409,18 @@ body {
 }
 
 .link-color-vue:hover {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--color-vue-hover) calc(50% - var(--bg-small-size)),
-    var(--color-vue-hover) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--color-vue-hover) calc(50% - var(--bg-small-size)),
+      var(--color-vue-hover) 100%);
   background-position: 0 100%;
 }
 
 .link-static-vue {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--color-vue-hover) calc(50% - var(--bg-small-size)),
-    var(--color-vue-hover) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--color-vue-hover) calc(50% - var(--bg-small-size)),
+      var(--color-vue-hover) 100%);
   background-position: 0 100%;
   cursor: default;
 }
@@ -476,12 +428,10 @@ body {
 .link-color-py {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
   cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--link-color-py) calc(50% - var(--bg-small-size)),
-    var(--link-color-py) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--link-color-py) calc(50% - var(--bg-small-size)),
+      var(--link-color-py) 100%);
   transition: background-size, background-position var(--time) ease-in-out 0s;
   background-size: 100% 200%;
   background-position: 0 0;
@@ -489,22 +439,18 @@ body {
 }
 
 .link-color-py:hover {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-py) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-py) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-py) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-py) 100%);
   background-position: 0 100%;
 }
 
 .link-static-py {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-py) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-py) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-py) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-py) 100%);
   background-position: 0 100%;
   cursor: default;
 }
@@ -512,12 +458,10 @@ body {
 .link-color-cpp {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
   cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--link-color-cpp) calc(50% - var(--bg-small-size)),
-    var(--link-color-cpp) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--link-color-cpp) calc(50% - var(--bg-small-size)),
+      var(--link-color-cpp) 100%);
   transition: background-size, background-position var(--time) ease-in-out 0s;
   background-size: 100% 200%;
   background-position: 0 0;
@@ -525,22 +469,18 @@ body {
 }
 
 .link-color-cpp:hover {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-cpp) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-cpp) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-cpp) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-cpp) 100%);
   background-position: 0 100%;
 }
 
 .link-static-cpp {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-cpp) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-cpp) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-cpp) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-cpp) 100%);
   background-position: 0 100%;
   cursor: default;
 }
@@ -548,12 +488,10 @@ body {
 .link-color-projects {
   padding: var(--padding-top) var(--padding-sides) var(--padding-bottom);
   cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--link-color-projects) calc(50% - var(--bg-small-size)),
-    var(--link-color-projects) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--link-color-projects) calc(50% - var(--bg-small-size)),
+      var(--link-color-projects) 100%);
   transition: background-size, background-position var(--time) ease-in-out 0s;
   background-size: 100% 200%;
   background-position: 0 0;
@@ -561,22 +499,18 @@ body {
 }
 
 .link-color-projects:hover {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-projects) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-projects) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-projects) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-projects) 100%);
   background-position: 0 100%;
 }
 
 .link-static-projects {
-  background-image: linear-gradient(
-    transparent 0,
-    transparent calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-projects) calc(50% - var(--bg-small-size)),
-    var(--hovered-link-color-projects) 100%
-  );
+  background-image: linear-gradient(transparent 0,
+      transparent calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-projects) calc(50% - var(--bg-small-size)),
+      var(--hovered-link-color-projects) 100%);
   background-position: 0 100%;
   cursor: default;
 }
@@ -592,4 +526,28 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-primary);
+  border: 2px solid var(--color-background);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-background);
 }

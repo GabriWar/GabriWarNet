@@ -8,7 +8,7 @@ const currentIndex = ref(0)
 const handleMouseOver = () => {
   if (titleRef.value) {
     currentIndex.value = (currentIndex.value + 1) % texts.length
-    const nextText = texts[currentIndex.value]
+    const nextText = texts[currentIndex.value] || ''
 
     scramble(titleRef.value, nextText, {
       speed: 30,
@@ -20,7 +20,7 @@ const handleMouseOver = () => {
 
 onMounted(() => {
   if (titleRef.value) {
-    scramble(titleRef.value, texts[0], {
+    scramble(titleRef.value, texts[0] || '', {
       speed: 30,
       iterations: 3,
       chars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ_!'
@@ -31,22 +31,35 @@ onMounted(() => {
 
 <template>
   <section class="hero">
-    <h1
-      ref="titleRef"
-      class="hero-title"
-      @mouseover="handleMouseOver"
-    >
-      GabriWar
-    </h1>
+    <div class="fixed-container">
+      <h1
+        ref="titleRef"
+        class="hero-title"
+        @mouseover="handleMouseOver"
+      >
+        GabriWar
+      </h1>
+    </div>
   </section>
 </template>
 
 <style scoped>
 .hero {
   min-height: 100vh;
+  position: relative;
+}
+
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 0;
+  pointer-events: auto; /* Allow hover on title */
 }
 
 .hero-title {

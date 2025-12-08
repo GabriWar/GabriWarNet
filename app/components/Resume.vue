@@ -115,6 +115,15 @@ const animProps = {
         <NuxtLink class="txtanim link-color-vue" to="/links/3"><DecryptedText text="Vue" v-bind="animProps" /></NuxtLink>
       </p>
     </div>
+
+    <div class="scroll-indicator">
+      <span class="scroll-text">SCROLL</span>
+      <div class="arrow-container">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -163,5 +172,28 @@ const animProps = {
 
 .resumeproj a {
   margin-right: var(--spacing-sm);
+}
+
+.scroll-indicator {
+  margin-top: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  opacity: 0.6;
+  animation: bounce 2s infinite;
+  pointer-events: none;
+}
+
+.scroll-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
 }
 </style>

@@ -79,7 +79,9 @@ const shuffleText = (originalText: string, currentRevealed: Set<number>): string
 
     for (let i = nonSpaceChars.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [nonSpaceChars[i], nonSpaceChars[j]] = [nonSpaceChars[j], nonSpaceChars[i]];
+      const temp = nonSpaceChars[i]!;
+      nonSpaceChars[i] = nonSpaceChars[j]!;
+      nonSpaceChars[j] = temp;
     }
 
     let charIndex = 0;
@@ -176,7 +178,6 @@ watch(
             clearInterval(interval!);
             interval = null;
             isScrambling.value = false;
-            displayText.value = props.text;
             emit('animationComplete');
           }
         } else {
@@ -268,17 +269,3 @@ onUnmounted(() => {
     </span>
   </span>
 </template>
-
-<style scoped>
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-</style>
