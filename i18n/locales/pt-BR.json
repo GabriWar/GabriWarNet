@@ -40,6 +40,29 @@
     },
     "projects": {
       "title": "Projetos"
+    },
+    "skills": {
+      "title": "Habilidades",
+      "intro": "Linguagens de Programação: ",
+      "backend": ". Backend e Bancos de Dados: ",
+      "frontend": ". Desenvolvimento Frontend: ",
+      "cloud": ". Nuvem e Infraestrutura: ",
+      "iot": ". IoT Industrial e SCADA: ",
+      "ai": ". IA/ML: ",
+      "realtime": ". Sistemas em Tempo Real: ",
+      "devops": ". DevOps: ",
+      "specialized": ". Habilidades Especializadas: ",
+      "langs": ". Idiomas: "
+    },
+    "competencies": {
+      "title": "Competências",
+      "description": "Criatividade e resolução inovadora de problemas, Membro de equipe motivado com fortes habilidades de colaboração, Excelentes habilidades de comunicação em ambientes multilíngues, Inglês avançado/fluente para projetos internacionais, Paixão por aprendizado contínuo e exploração tecnológica"
+    },
+    "interests": {
+      "title": "Interesses e Paixões",
+      "intro": "Programação (Especialmente em ",
+      "android": "), Modding Android (Rooting, criação de ROMs personalizadas e customização de sistema), Análise de Software (Debugging e engenharia reversa de software), ",
+      "music": " Sistemas (Administração avançada de sistemas e customização), Música e Artes Criativas (Arte digital e design), Aprendizado Contínuo (Sempre explorando novas tecnologias e conceitos de programação), Investimento (Projetos de tecnologia e mercados financeiros)"
     }
   },
   "projectsList": {

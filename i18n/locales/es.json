@@ -14,6 +14,89 @@
     "contact": "Contacto",
     "loading": "Cargando...",
     "error": "Error",
-    "success": "Éxito"
+    "success": "Éxito",
+    "scroll": "DESPLAZAR",
+    "backToTop": "Volver arriba"
+  },
+  "resume": {
+    "title": "Currículum",
+    "intro": "Hola, soy Gabriel, un apasionado Desarrollador Full Stack actualmente estudiando Ciencias de la Computación. Con un amor arraigado por Linux, me considero un usuario avanzado, amo el software libre y de código abierto. Mi curiosidad se extiende más allá de la programación, también soy competente en manipulación de imágenes, y mi amor por depurar aplicaciones y modificar teléfonos Android agrega a mis habilidades técnicas.",
+    "webdev": {
+      "title": "Desarrollo Web",
+      "description": "Competente en tecnologías front-end y back-end, experimentado con HTML, CSS, JavaScript (",
+      "and": ", ",
+      "serverside": "), y lenguajes de scripting del lado del servidor ("
+    },
+    "linux": {
+      "title": "Linux",
+      "description": "Competente con la ",
+      "comfortable": " operación de línea de comandos, cómodo con ",
+      "shellscripting": "Scripting de Shell",
+      "optimization": " y automatización, experto en optimizar el rendimiento del sistema y solución de problemas."
+    },
+    "education": {
+      "title": "Educación",
+      "description": "Actualmente cursando un grado en Ciencias de la Computación, estoy dedicado a expandir mi conocimiento y mantenerme a la vanguardia de la tecnología. También hablo Portugués (nativo), Inglés (fluido), Alemán (aprendiendo)."
+    },
+    "projects": {
+      "title": "Proyectos"
+    },
+    "skills": {
+      "title": "Habilidades",
+      "intro": "Lenguajes de Programación: ",
+      "backend": ". Backend y Bases de Datos: ",
+      "frontend": ". Desarrollo Frontend: ",
+      "cloud": ". Nube e Infraestructura: ",
+      "iot": ". IoT Industrial y SCADA: ",
+      "ai": ". IA/ML: ",
+      "realtime": ". Sistemas en Tiempo Real: ",
+      "devops": ". DevOps: ",
+      "specialized": ". Habilidades Especializadas: ",
+      "langs": ". Idiomas: "
+    },
+    "competencies": {
+      "title": "Competencias",
+      "description": "Creatividad y resolución innovadora de problemas, Miembro de equipo motivado con fuertes habilidades de colaboración, Excelentes habilidades de comunicación en entornos multilingües, Inglés avanzado/fluido para proyectos internacionales, Pasión por el aprendizaje continuo y la exploración tecnológica"
+    },
+    "interests": {
+      "title": "Intereses y Pasiones",
+      "intro": "Programación (Especialmente en ",
+      "android": "), Modificación de Android (Rooting, creación de ROMs personalizadas y personalización del sistema), Análisis de Software (Depuración e ingeniería inversa de software), ",
+      "music": " Sistemas (Administración avanzada de sistemas y personalización), Música y Artes Creativas (Arte digital y diseño), Aprendizaje Continuo (Siempre explorando nuevas tecnologías y conceptos de programación), Inversión (Proyectos tecnológicos y mercados financieros)"
+    }
+  },
+  "projectsList": {
+    "ai": {
+      "title": "IA",
+      "description": "Soluciones avanzadas de Inteligencia Artificial enfocadas en modelos predictivos y análisis de datos."
+    },
+    "crm": {
+      "title": "CRM",
+      "description": "Sistema integral de Gestión de Relaciones con el Cliente adaptado a las necesidades empresariales."
+    },
+    "supervisorio": {
+      "title": "SUPERVISORIO",
+      "description": "Sistema supervisorio industrial para monitoreo y control en tiempo real."
+    },
+    "telemetry": {
+      "title": "TELEMETRÍA",
+      "description": "Plataforma de recopilación y visualización de datos de telemetría en tiempo real."
+    },
+    "pwa": {
+      "title": "PWA",
+      "description": "Aplicación Web Progresiva que ofrece una experiencia similar a la nativa en la web."
+    },
+    "whatsapp": {
+      "title": "WHATSAPP",
+      "description": "Servicios de mensajería automatizada de WhatsApp e integración de bots."
+    },
+    "portfolio": {
+      "title": "PÁGINA DE PORTAFOLIO",
+      "description": "Sitio web de portafolio personal que muestra habilidades y proyectos con diseño único."
+    },
+    "linux": {
+      "title": "LINUX",
+      "description": "Distribuciones Linux personalizadas y herramientas de automatización de scripts de shell."
+    }
   }
 }

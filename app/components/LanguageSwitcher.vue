@@ -1,9 +1,25 @@
 <script setup lang="ts">
 const { locale, locales, setLocale } = useI18n()
 
-const switchLanguage = () => {
+const switchLanguage = (event: MouseEvent) => {
   const newLocale = locale.value === 'en' ? 'pt-BR' : 'en'
-  setLocale(newLocale)
+  
+  if (import.meta.client && event && typeof document !== 'undefined' && 'startViewTransition' in document) {
+    const x = event.clientX
+    const y = event.clientY
+
+    // Set CSS variables for the click position
+    const root = document.documentElement
+    root.style.setProperty('--click-x', `${x}px`)
+    root.style.setProperty('--click-y', `${y}px`)
+
+    // Use View Transition API if supported
+    const transition = (document as any).startViewTransition(() => {
+      setLocale(newLocale)
+    })
+  } else {
+    setLocale(newLocale)
+  }
 }
 
 const currentLanguageLabel = computed(() => {
@@ -24,8 +40,8 @@ const currentLanguageLabel = computed(() => {
 <style scoped>
 .language-switcher {
   position: fixed;
-  top: 2rem;
-  right: 2rem;
+  bottom: 2rem;
+  left: 2rem;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -60,8 +76,8 @@ const currentLanguageLabel = computed(() => {
 
 @media (max-width: 768px) {
   .language-switcher {
-    top: 1.5rem;
-    right: 1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
   }
 }
 </style>

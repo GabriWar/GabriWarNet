@@ -7,11 +7,20 @@ const visibility = reactive({
   webdev: false,
   linux: false,
   education: false,
-  projects: false
+  projects: false,
+  skills: false,
+  competencies: false,
+  interests: false
 })
 
 const toggle = (section: keyof typeof visibility) => {
-  visibility[section] = !visibility[section]
+  const wasOpen = visibility[section]
+  // Close all sections first
+  Object.keys(visibility).forEach(key => {
+    visibility[key as keyof typeof visibility] = false
+  })
+  // Toggle the clicked section (close if it was already open)
+  visibility[section] = !wasOpen
 }
 
 const animProps = {
@@ -116,6 +125,93 @@ const animProps = {
       </p>
     </div>
 
+    <div class="resume-section" data-visible="1">
+      <a
+        class="txtanim link-color"
+        @click="toggle('skills')"
+      >
+        {{ $t('resume.skills.title') }}
+      </a>
+      <p v-if="visibility.skills" class="resumeskills">
+        <DecryptedText :text="$t('resume.skills.intro')" v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-js" to="/links/2"><DecryptedText text="JavaScript/TypeScript" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Go" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C/C++" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", C#, Java, PHP, Assembly, Bash" v-bind="animProps" />
+        <DecryptedText :text="$t('resume.skills.frontend')" v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-react" to="/links/3"><DecryptedText text="React" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-react" to="/links/3"><DecryptedText text="Angular" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-vue" to="/links/3"><DecryptedText text="Vue" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", Modern JavaScript frameworks, Component libraries, Responsive design" v-bind="animProps" />
+        <DecryptedText :text="$t('resume.skills.backend')" v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-projects" to="/links/2"><DecryptedText text="Node.js" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", SQL (MySQL, Postgres, MSSQL) & NoSQL, Bun, REST APIs" v-bind="animProps" />
+        <DecryptedText :text="$t('resume.skills.cloud')" v-bind="animProps" />
+        <DecryptedText text="Google Cloud Platform, Docker, Nginx, Container orchestration, Minio" v-bind="animProps" />
+        <DecryptedText :text="$t('resume.skills.iot')" v-bind="animProps" />
+        <DecryptedText text="Modbus TCP/IP, Industrial automation protocols, PLC programming, Real-time telemetry systems" v-bind="animProps" />
+        <DecryptedText :text="$t('resume.skills.ai')" v-bind="animProps" />
+        <DecryptedText text="Large Language Models, RAG architecture, Model deployment, Computer vision" v-bind="animProps" />
+        <DecryptedText :text="$t('resume.skills.realtime')" v-bind="animProps" />
+        <DecryptedText text="WebSockets, Real-time data synchronization, Messaging platforms integration" v-bind="animProps" />
+        <DecryptedText :text="$t('resume.skills.devops')" v-bind="animProps" />
+        <DecryptedText text="Git, " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-linux" to="/links/7"><DecryptedText text="Linux" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=" (Arch, Debian, Ubuntu, Kali), System automation, CI/CD" v-bind="animProps" />
+        <DecryptedText :text="$t('resume.skills.specialized')" v-bind="animProps" />
+        <DecryptedText text="Enterprise platform architecture, Digital signatures integration, Document generation, Visual workflow builders" v-bind="animProps" />
+        <DecryptedText :text="$t('resume.skills.langs')" v-bind="animProps" />
+        <DecryptedText text="Portuguese (Native), English (Fluent), Spanish (Proficient), Italian (Basic), Russian (Learning)" v-bind="animProps" />
+      </p>
+    </div>
+
+    <div class="resume-section" data-visible="1">
+      <a
+        class="txtanim link-color-web"
+        @click="toggle('competencies')"
+      >
+        {{ $t('resume.competencies.title') }}
+      </a>
+      <p v-if="visibility.competencies" class="resumecompetencies">
+        <DecryptedText
+          :text="$t('resume.competencies.description')"
+          v-bind="animProps"
+        />
+      </p>
+    </div>
+
+    <div class="resume-section" data-visible="1">
+      <a
+        class="txtanim link-color-rust"
+        @click="toggle('interests')"
+      >
+        {{ $t('resume.interests.title') }}
+      </a>
+      <p v-if="visibility.interests" class="resumeinterests">
+        <DecryptedText :text="$t('resume.interests.intro')" v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C++" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Go" v-bind="animProps" /></NuxtLink>
+        <DecryptedText text=", and " v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-js" to="/links/2"><DecryptedText text="JavaScript" v-bind="animProps" /></NuxtLink>
+        <DecryptedText :text="$t('resume.interests.android')" v-bind="animProps" />
+        <NuxtLink class="txtanim link-color-linux" to="/links/7"><DecryptedText text="Linux" v-bind="animProps" /></NuxtLink>
+        <DecryptedText :text="$t('resume.interests.music')" v-bind="animProps" />
+      </p>
+    </div>
+
     <div class="scroll-indicator">
       <span class="scroll-text">{{ $t('common.scroll') }}</span>
       <div class="arrow-container">
@@ -150,11 +246,41 @@ const animProps = {
   display: none;
 }
 
+/* Show scrollbar on mobile */
 @media (max-width: 768px) {
   .resume-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-text-secondary) transparent;
+  }
+  
+  .resume-container::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+  }
+  
+  .resume-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .resume-container::-webkit-scrollbar-thumb {
+    background: var(--color-text-secondary);
+    border-radius: 3px;
+  }
+}
+
+@media (max-width: 768px) {
+  .resume-container {
+    position: fixed;
+    top: 0;
     left: 0;
+    right: 0;
     width: 100%;
-    padding: 5rem var(--spacing-md) var(--spacing-xl);
+    max-width: 100%;
+    height: 100vh;
+    padding: 4rem var(--spacing-md) 5rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    pointer-events: auto;
   }
 }
 
@@ -181,6 +307,14 @@ const animProps = {
   pointer-events: auto;
 }
 
+@media (max-width: 768px) {
+  .resume-section > a {
+    font-size: 1.5rem;
+    padding: var(--spacing-xs) 0;
+    margin-bottom: var(--spacing-md);
+  }
+}
+
 .resume-section > p {
   line-height: 1.6;
   color: var(--color-text-secondary);
@@ -196,6 +330,8 @@ const animProps = {
   pointer-events: auto;
 }
 
+
+
 .scroll-indicator {
   margin-top: var(--spacing-2xl);
   display: flex;
@@ -205,6 +341,12 @@ const animProps = {
   opacity: 0.6;
   animation: bounce 2s infinite;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .scroll-indicator {
+    display: none;
+  }
 }
 
 .scroll-text {
