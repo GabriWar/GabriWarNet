@@ -1,0 +1,79 @@
+{
+  "welcome": "Bem-vindo",
+  "theme": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "toggle": "Alternar tema"
+  },
+  "language": {
+    "select": "Selecionar idioma"
+  },
+  "common": {
+    "home": "Início",
+    "about": "Sobre",
+    "contact": "Contato",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "scroll": "ROLAR",
+    "backToTop": "Voltar ao topo"
+  },
+  "resume": {
+    "title": "Currículo",
+    "intro": "Olá, sou Gabriel, um Desenvolvedor Full Stack apaixonado, atualmente estudando Ciência da Computação. Com um amor profundo por Linux, me considero um usuário avançado, adoro software livre e de código aberto. Minha curiosidade se estende além da programação, também sou proficiente em manipulação de imagens, e meu amor por debugar aplicativos e fazer modding em celulares Android adiciona às minhas habilidades técnicas.",
+    "webdev": {
+      "title": "WebDev",
+      "description": "Proficiente em tecnologias front-end e back-end, experiente com HTML, CSS, JavaScript (",
+      "and": ", ",
+      "serverside": "), e linguagens de script do lado do servidor ("
+    },
+    "linux": {
+      "title": "Linux",
+      "description": "Proficiente com operação de linha de comando ",
+      "comfortable": ", confortável com ",
+      "shellscripting": "Shell Scripting",
+      "optimization": " e automação, hábil em otimizar desempenho do sistema e solução de problemas."
+    },
+    "education": {
+      "title": "Educação",
+      "description": "Atualmente cursando Ciência da Computação, sou dedicado a expandir meu conhecimento e permanecer na vanguarda da tecnologia. Também falo Português (nativo), Inglês (fluente), Alemão (aprendendo)."
+    },
+    "projects": {
+      "title": "Projetos"
+    }
+  },
+  "projectsList": {
+    "ai": {
+      "title": "IA",
+      "description": "Soluções avançadas de Inteligência Artificial focadas em modelos preditivos e análise de dados."
+    },
+    "crm": {
+      "title": "CRM",
+      "description": "Sistema abrangente de Gestão de Relacionamento com Cliente adaptado para necessidades empresariais."
+    },
+    "supervisorio": {
+      "title": "SUPERVISÓRIO",
+      "description": "Sistema supervisório industrial para monitoramento e controle em tempo real."
+    },
+    "telemetry": {
+      "title": "TELEMETRIA",
+      "description": "Plataforma de coleta e visualização de dados de telemetria em tempo real."
+    },
+    "pwa": {
+      "title": "PWA",
+      "description": "Aplicação Web Progressiva oferecendo experiência nativa na web."
+    },
+    "whatsapp": {
+      "title": "WHATSAPP",
+      "description": "Serviços de mensagens automatizadas e integração de bot no WhatsApp."
+    },
+    "portfolio": {
+      "title": "PÁGINA DE PORTFÓLIO",
+      "description": "Website de portfólio pessoal exibindo habilidades e projetos com design único."
+    },
+    "linux": {
+      "title": "LINUX",
+      "description": "Distribuições Linux personalizadas e ferramentas de automação com shell scripting."
+    }
+  }
+}

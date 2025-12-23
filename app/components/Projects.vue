@@ -1,62 +1,64 @@
 <script setup lang="ts">
-const projects = [
+const { t } = useI18n()
+
+const projects = computed(() => [
   {
-    title: 'AI',
-    description: 'Advanced Artificial Intelligence solutions focusing on predictive models and data analysis.',
+    title: t('projectsList.ai.title'),
+    description: t('projectsList.ai.description'),
     skills: ['Python', 'TensorFlow', 'PyTorch'],
     link: '/projects/ai',
     color: 'var(--color-primary)'
   },
   {
-    title: 'CRM',
-    description: 'Comprehensive Customer Relationship Management system tailored for business needs.',
+    title: t('projectsList.crm.title'),
+    description: t('projectsList.crm.description'),
     skills: ['Node.js', 'Vue.js', 'PostgreSQL'],
     link: '/projects/crm',
     color: 'var(--color-success)'
   },
   {
-    title: 'SUPERVISÓRIO',
-    description: 'Industrial supervisory system for real-time monitoring and control.',
+    title: t('projectsList.supervisorio.title'),
+    description: t('projectsList.supervisorio.description'),
     skills: ['C++', 'Qt', 'Modbus'],
     link: '/projects/supervisorio',
     color: 'var(--color-warning)'
   },
   {
-    title: 'TELEMETRY',
-    description: 'Real-time telemetry data collection and visualization platform.',
+    title: t('projectsList.telemetry.title'),
+    description: t('projectsList.telemetry.description'),
     skills: ['Go', 'InfluxDB', 'Grafana'],
     link: '/projects/telemetry',
     color: 'var(--color-info)'
   },
   {
-    title: 'PWA',
-    description: 'Progressive Web Application delivering native-like experience on the web.',
+    title: t('projectsList.pwa.title'),
+    description: t('projectsList.pwa.description'),
     skills: ['Nuxt', 'Service Workers', 'TypeScript'],
     link: '/projects/pwa',
     color: 'var(--color-secondary)'
   },
   {
-    title: 'WHATSAPP',
-    description: 'Automated WhatsApp messaging and bot integration services.',
+    title: t('projectsList.whatsapp.title'),
+    description: t('projectsList.whatsapp.description'),
     skills: ['Node.js', 'WhatsApp API', 'Webhooks'],
     link: '/projects/whatsapp',
     color: '#25D366'
   },
   {
-    title: 'PORTIFOLIO PAGE',
-    description: 'Personal portfolio website showcasing skills and projects with unique design.',
+    title: t('projectsList.portfolio.title'),
+    description: t('projectsList.portfolio.description'),
     skills: ['Nuxt', 'Three.js', 'CSS'],
     link: '/projects/portfolio',
     color: 'var(--color-text-primary)'
   },
   {
-    title: 'LINUX',
-    description: 'Custom Linux distributions and shell scripting automation tools.',
+    title: t('projectsList.linux.title'),
+    description: t('projectsList.linux.description'),
     skills: ['Bash', 'System Administration', 'Kernel'],
     link: '/projects/linux',
     color: '#FCC624'
   }
-]
+])
 
 const sectionRefs = ref<HTMLElement[]>([])
 let rafId: number

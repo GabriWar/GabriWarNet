@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     'lenis/nuxt'
   ],
 
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/fonts.css', '~/assets/css/main.css'],
 
   i18n: {
     locales: [
@@ -26,19 +26,34 @@ export default defineNuxtConfig({
         file: 'en.json'
       },
       {
-        code: 'es',
-        iso: 'es-ES',
-        name: 'Español',
-        file: 'es.json'
+        code: 'pt-BR',
+        iso: 'pt-BR',
+        name: 'Português (BR)',
+        file: 'pt-BR.json'
       }
     ],
-    defaultLocale: 'en',
+    defaultLocale: 'pt-BR',
     langDir: 'locales',
     strategy: 'no_prefix',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root'
+    }
+  },
+
+  fonts: {
+    providers: {
+      google: false
+    }
+  },
+
+  nitro: {
+    devServer: {
+      port: 3069
+    },
+    preview: {
+      port: 3069
     }
   }
 })

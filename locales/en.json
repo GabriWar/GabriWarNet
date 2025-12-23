@@ -14,6 +14,66 @@
     "contact": "Contact",
     "loading": "Loading...",
     "error": "Error",
-    "success": "Success"
+    "success": "Success",
+    "scroll": "SCROLL",
+    "backToTop": "Back to top"
+  },
+  "resume": {
+    "title": "Resume",
+    "intro": "Hello, I'm Gabriel, a passionate Full Stack Developer currently studying Computer Science. With a deep-rooted love for Linux, I consider myself a power user, I love libre and open-source software. My curiosity extends beyond coding, I'm also proficient in image manipulation, And my love for debugging apps and modding Android phones adds to my technical skills.",
+    "webdev": {
+      "title": "WebDev",
+      "description": "Proficient in both front-end and back-end technologies, experienced with HTML, CSS, JavaScript (",
+      "and": ", ",
+      "serverside": "), and server-side scripting languages ("
+    },
+    "linux": {
+      "title": "Linux",
+      "description": "Proficient with the ",
+      "comfortable": " command line operation, comfortable with ",
+      "shellscripting": "Shell Scripting",
+      "optimization": " and automation, adept at optimizing system performance and troubleshooting."
+    },
+    "education": {
+      "title": "Education",
+      "description": "Currently pursuing a degree in Computer Science, I am dedicated to expanding my knowledge and staying at the forefront of technology. I also speak Portuguese (native), English (fluent), German (learning)."
+    },
+    "projects": {
+      "title": "Projects"
+    }
+  },
+  "projectsList": {
+    "ai": {
+      "title": "AI",
+      "description": "Advanced Artificial Intelligence solutions focusing on predictive models and data analysis."
+    },
+    "crm": {
+      "title": "CRM",
+      "description": "Comprehensive Customer Relationship Management system tailored for business needs."
+    },
+    "supervisorio": {
+      "title": "SUPERVISORY",
+      "description": "Industrial supervisory system for real-time monitoring and control."
+    },
+    "telemetry": {
+      "title": "TELEMETRY",
+      "description": "Real-time telemetry data collection and visualization platform."
+    },
+    "pwa": {
+      "title": "PWA",
+      "description": "Progressive Web Application delivering native-like experience on the web."
+    },
+    "whatsapp": {
+      "title": "WHATSAPP",
+      "description": "Automated WhatsApp messaging and bot integration services."
+    },
+    "portfolio": {
+      "title": "PORTFOLIO PAGE",
+      "description": "Personal portfolio website showcasing skills and projects with unique design."
+    },
+    "linux": {
+      "title": "LINUX",
+      "description": "Custom Linux distributions and shell scripting automation tools."
+    }
   }
 }

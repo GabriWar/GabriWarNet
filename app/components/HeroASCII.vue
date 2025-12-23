@@ -103,6 +103,7 @@ class AsciiFilter {
     this.domElement.appendChild(this.pre)
 
     this.canvas = document.createElement('canvas')
+    this.canvas.style.display = 'none'
     this.context = this.canvas.getContext('2d')!
     this.domElement.appendChild(this.canvas)
 
@@ -615,11 +616,11 @@ onUnmounted(() => {
 }
 
 .ascii-text-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: 0;
 }
 

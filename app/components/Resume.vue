@@ -31,11 +31,11 @@ const animProps = {
         class="txtanim link-color"
         @click="toggle('resume')"
       >
-        Resume
+        {{ $t('resume.title') }}
       </a>
       <p v-if="visibility.resume" class="resumetxt">
         <DecryptedText
-          text="Hello, I'm Gabriel, a passionate Full Stack Developer currently studying Computer Science. With a deep-rooted love for Linux, I consider myself a power user, I love libre and open-source software. My curiosity extends beyond coding, I'm also proficient in image manipulation, And my love for debugging apps and modding Android phones adds to my technical skills."
+          :text="$t('resume.intro')"
           v-bind="animProps"
         />
       </p>
@@ -46,22 +46,22 @@ const animProps = {
         class="txtanim link-color-web"
         @click="toggle('webdev')"
       >
-        WebDev
+        {{ $t('resume.webdev.title') }}
       </a>
       <p v-if="visibility.webdev" class="resumeWebDev">
-        <DecryptedText text="Proficient in both front-end and back-end technologies, experienced with HTML, CSS, JavaScript (" v-bind="animProps" />
+        <DecryptedText :text="$t('resume.webdev.description')" v-bind="animProps" />
         <NuxtLink class="txtanim link-color-react" to="/links/3"><DecryptedText text="React/Next" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
+        <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
         <NuxtLink class="txtanim link-color-vue" to="/links/3"><DecryptedText text="Vue/Nuxt" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
+        <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
         <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Svelte/SvelteKit" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text="), and server-side scripting languages (" v-bind="animProps" />
+        <DecryptedText :text="$t('resume.webdev.serverside')" v-bind="animProps" />
         <NuxtLink class="txtanim link-color-projects" to="/links/2"><DecryptedText text="Node.js" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
+        <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
         <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C++" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
+        <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
         <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
+        <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
         <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
         <DecryptedText text=")." v-bind="animProps" />
       </p>
@@ -72,14 +72,14 @@ const animProps = {
         class="txtanim link-color-linux"
         @click="toggle('linux')"
       >
-        Linux
+        {{ $t('resume.linux.title') }}
       </a>
       <p v-if="visibility.linux" class="resumelinux">
-        <DecryptedText text="Proficient with the " v-bind="animProps" />
+        <DecryptedText :text="$t('resume.linux.description')" v-bind="animProps" />
         <NuxtLink class="txtanim link-color-linux" to="/links/7"><DecryptedText text="Linux" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=" command line operation, comfortable with " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color" to="/links/7"><DecryptedText text="Shell Scripting" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=" and automation, adept at optimizing system performance and troubleshooting." v-bind="animProps" />
+        <DecryptedText :text="$t('resume.linux.comfortable')" v-bind="animProps" />
+        <NuxtLink class="txtanim link-color" to="/links/7"><DecryptedText :text="$t('resume.linux.shellscripting')" v-bind="animProps" /></NuxtLink>
+        <DecryptedText :text="$t('resume.linux.optimization')" v-bind="animProps" />
       </p>
     </div>
 
@@ -88,11 +88,11 @@ const animProps = {
         class="txtanim link-color-edu"
         @click="toggle('education')"
       >
-        Education
+        {{ $t('resume.education.title') }}
       </a>
       <p v-if="visibility.education" class="resumeedu">
         <DecryptedText
-          text="Currently pursuing a degree in Computer Science, I am dedicated to expanding my knowledge and staying at the forefront of technology. I also speak Portuguese (native), English (fluent), German (learning)."
+          :text="$t('resume.education.description')"
           v-bind="animProps"
         />
       </p>
@@ -103,7 +103,7 @@ const animProps = {
         class="txtanim link-color-projects"
         @click="toggle('projects')"
       >
-        Projects
+        {{ $t('resume.projects.title') }}
       </a>
       <p v-if="visibility.projects" class="resumeproj">
         <NuxtLink class="txtanim link-color-projects" to="/links/1"><DecryptedText text="GitHub" v-bind="animProps" /></NuxtLink>
@@ -117,7 +117,7 @@ const animProps = {
     </div>
 
     <div class="scroll-indicator">
-      <span class="scroll-text">SCROLL</span>
+      <span class="scroll-text">{{ $t('common.scroll') }}</span>
       <div class="arrow-container">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -132,14 +132,30 @@ const animProps = {
   position: fixed;
   top: 0;
   left: 2rem;
-  width: 100%;
+  width: calc(100% - 2rem);
   height: 100vh;
   max-width: 600px;
   padding: var(--spacing-2xl) var(--spacing-md);
   font-family: var(--font-mono);
   overflow-y: auto;
   z-index: 10;
-  pointer-events: auto;
+  pointer-events: none;
+
+  /* Hide scrollbar */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.resume-container::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .resume-container {
+    left: 0;
+    width: 100%;
+    padding: 5rem var(--spacing-md) var(--spacing-xl);
+  }
 }
 
 .resume-section {
@@ -162,6 +178,7 @@ const animProps = {
   font-weight: 600;
   margin-bottom: var(--spacing-sm);
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .resume-section > p {
@@ -172,6 +189,11 @@ const animProps = {
 
 .resumeproj a {
   margin-right: var(--spacing-sm);
+  pointer-events: auto;
+}
+
+.resume-section a {
+  pointer-events: auto;
 }
 
 .scroll-indicator {
