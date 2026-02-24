@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import DecryptedText from './DecryptedText.vue'
+import PatternBackground from './patterns/PatternBackground.vue'
 
 const visibility = reactive({
   resume: false,
@@ -34,6 +35,7 @@ const animProps = {
 </script>
 
 <template>
+  <PatternBackground />
   <div class="resume-container">
     <div class="resume-section" data-visible="1">
       <a
