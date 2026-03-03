@@ -13,5 +13,8 @@ onMounted(() => {
     <HeroPhysics v-if="heroVariant === 0" />
     <HeroScramble v-else-if="heroVariant === 1" />
     <HeroASCII v-else />
+    <template #fallback>
+      <div style="min-height: 100vh" />
+    </template>
   </ClientOnly>
 </template>

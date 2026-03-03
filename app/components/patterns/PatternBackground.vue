@@ -26,13 +26,18 @@ let patternFn = patterns[patternNames[0]]
 let time = 0
 let lastFrame = 0
 let rafId = 0
-const TARGET_DT = 1000 / 30 // 30 fps cap
+let worker: Worker | null = null
+const TARGET_DT = 1000 / 30
 
+// ── Main-thread fallback ────────────────────────────────
 function frame(now: number) {
   rafId = requestAnimationFrame(frame)
 
   const elapsed = now - lastFrame
   if (elapsed < TARGET_DT) return
+
+  // Yield to pending input events (better INP)
+  if ((navigator as any).scheduling?.isInputPending?.()) return
 
   const dt = lastFrame ? elapsed / 1000 : 0.016
   lastFrame = now
@@ -41,7 +46,7 @@ function frame(now: number) {
   const canvas = canvasRef.value
   if (canvas) {
     const ctx = canvas.getContext('2d')
-    if (ctx) renderPattern(ctx, patternFn, props.width, props.height, time, true, false)
+    if (ctx) renderPattern(ctx, patternFn, props.width, props.height, time, true, false, 2)
   }
 }
 
@@ -49,17 +54,49 @@ onMounted(() => {
   randomizeSeed()
   time = Math.random() * 500 + 50
   const name = patternNames[Math.floor(Math.random() * patternNames.length)]
-  patternFn = patterns[name]
 
-  if (canvasRef.value) {
-    canvasRef.value.width = props.width
-    canvasRef.value.height = props.height
+  const canvas = canvasRef.value
+  if (!canvas) return
+
+  canvas.width = props.width
+  canvas.height = props.height
+
+  // Try OffscreenCanvas + Worker (moves all computation off main thread)
+  if (typeof OffscreenCanvas !== 'undefined' && canvas.transferControlToOffscreen) {
+    try {
+      const offscreen = canvas.transferControlToOffscreen()
+      worker = new Worker(
+        new URL('../../composables/patterns/patternWorker.ts', import.meta.url),
+        { type: 'module' }
+      )
+      worker.postMessage({
+        type: 'init',
+        canvas: offscreen,
+        width: props.width,
+        height: props.height,
+        speed: props.speed,
+        time,
+        patternName: name,
+      }, [offscreen])
+      return
+    }
+    catch {
+      // OffscreenCanvas or Worker failed — fall back to main thread
+      worker = null
+    }
   }
 
+  // Fallback: main-thread rendering
+  patternFn = patterns[name]
   rafId = requestAnimationFrame(frame)
 })
 
 onUnmounted(() => {
+  if (worker) {
+    worker.postMessage({ type: 'stop' })
+    worker.terminate()
+    worker = null
+  }
   cancelAnimationFrame(rafId)
 })
 </script>

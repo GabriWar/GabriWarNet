@@ -89,6 +89,7 @@ export function renderPattern(
   t: number,
   dither: boolean,
   invert: boolean,
+  scale: number = 1,
 ) {
   if (!cachedImgData || cachedW !== w || cachedH !== h) {
     cachedImgData = ctx.createImageData(w, h)
@@ -96,12 +97,15 @@ export function renderPattern(
     cachedH = h
   }
   const data = cachedImgData.data
+  const sw = w * scale
+  const sh = h * scale
 
   if (dither) {
     for (let y = 0; y < h; y++) {
       const row = (y & 7) << 3
+      const sy = y * scale
       for (let x = 0; x < w; x++) {
-        const intensity = fn(x, y, w, h, t)
+        const intensity = fn(x * scale, sy, sw, sh, t)
         const threshold = (BAYER[row + (x & 7)] + 0.5) * 0.015625
         const v = (intensity > threshold) !== invert ? 255 : 0
         const i = (y * w + x) << 2
@@ -114,8 +118,9 @@ export function renderPattern(
   }
   else {
     for (let y = 0; y < h; y++) {
+      const sy = y * scale
       for (let x = 0; x < w; x++) {
-        const raw = fn(x, y, w, h, t)
+        const raw = fn(x * scale, sy, sw, sh, t)
         const v = (invert ? 1 - raw : raw) * 255 | 0
         const i = (y * w + x) << 2
         data[i] = v

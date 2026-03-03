@@ -41,6 +41,17 @@ const availableChars = computed(() => props.useOriginalCharsOnly
   : props.characters.split('')
 );
 
+const effectiveSpeed = computed(() => Math.max(props.speed, 16));
+
+const usePerCharRendering = computed(() =>
+  props.className !== '' || props.encryptedClassName !== ''
+);
+
+const slicedDisplayText = computed(() => {
+  const text = displayText.value;
+  return visibleCount.value >= text.length ? text : text.slice(0, visibleCount.value);
+});
+
 const getNextIndex = (revealedSet: Set<number>): number => {
   const textLength = props.text.length;
   switch (props.revealDirection) {
@@ -118,7 +129,7 @@ watch(
   [
     () => isHovering.value,
     () => props.text,
-    () => props.speed,
+    () => effectiveSpeed.value,
     () => props.maxIterations,
     () => props.sequential,
     () => props.revealDirection,
@@ -191,7 +202,7 @@ watch(
             emit('animationComplete');
           }
         }
-      }, props.speed);
+      }, effectiveSpeed.value);
     } else {
       displayText.value = props.text;
       revealedIndices.value = new Set();
@@ -258,14 +269,10 @@ onUnmounted(() => {
   >
     <span class="sr-only">{{ props.text }}</span>
 
-    <span aria-hidden="true">
-      <span
+    <span aria-hidden="true"><template v-if="usePerCharRendering"><span
         v-for="(char, index) in displayText.split('').slice(0, visibleCount)"
         :key="index"
         :class="revealedIndices.has(index) || !isScrambling || !isHovering ? props.className : props.encryptedClassName"
-      >
-        {{ char }}
-      </span>
-    </span>
+      >{{ char }}</span></template><template v-else>{{ slicedDisplayText }}</template></span>
   </span>
 </template>

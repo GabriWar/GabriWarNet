@@ -8,6 +8,15 @@ const progress = ref(0)
 const isVisible = ref(true)
 
 onMounted(() => {
+  // Skip if already shown this session
+  if (sessionStorage.getItem('loadingShown')) {
+    isVisible.value = false
+    emit('finished')
+    return
+  }
+
+  sessionStorage.setItem('loadingShown', '1')
+
   // Disable scrolling while loading
   document.body.style.overflow = 'hidden'
 
@@ -17,7 +26,7 @@ onMounted(() => {
   const updateProgress = () => {
     const elapsed = Date.now() - startTime
     const calculatedProgress = Math.min((elapsed / duration) * 100, 100)
-    
+
     progress.value = calculatedProgress
 
     if (calculatedProgress < 100) {

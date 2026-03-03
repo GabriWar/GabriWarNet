@@ -37,7 +37,7 @@ onMounted(() => {
 .app-content-wrapper {
   position: relative;
   z-index: 0;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
 }
 </style>

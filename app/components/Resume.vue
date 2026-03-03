@@ -35,14 +35,33 @@ const toggleCat = (cat: keyof typeof skillCats) => {
   skillCats[cat] = !wasOpen
 }
 
+// Deferred visibility: content mounts one frame after container shows (better INP)
+const contentReady = reactive({
+  resume: false,
+  webdev: false,
+  linux: false,
+  education: false,
+  projects: false,
+  skills: false,
+  competencies: false,
+  interests: false
+})
+
 const toggle = (section: keyof typeof visibility) => {
   const wasOpen = visibility[section]
   // Close all sections first
   Object.keys(visibility).forEach(key => {
     visibility[key as keyof typeof visibility] = false
+    contentReady[key as keyof typeof contentReady] = false
   })
   // Toggle the clicked section (close if it was already open)
   visibility[section] = !wasOpen
+  // Defer content mounting to next frame for fast INP
+  if (!wasOpen) {
+    requestAnimationFrame(() => {
+      contentReady[section] = true
+    })
+  }
 }
 
 const animProps = {
@@ -66,10 +85,12 @@ const animProps = {
         {{ $t('resume.title') }}
       </a>
       <p v-if="visibility.resume" class="resumetxt">
-        <DecryptedText
-          :text="$t('resume.intro')"
-          v-bind="animProps"
-        />
+        <template v-if="contentReady.resume">
+          <DecryptedText
+            :text="$t('resume.intro')"
+            v-bind="animProps"
+          />
+        </template>
       </p>
     </div>
 
@@ -81,21 +102,23 @@ const animProps = {
         {{ $t('resume.webdev.title') }}
       </a>
       <p v-if="visibility.webdev" class="resumeWebDev">
-        <DecryptedText :text="$t('resume.webdev.description')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-react" to="/links/3"><DecryptedText text="React/Next" v-bind="animProps" /></NuxtLink>
-        <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-vue" to="/links/3"><DecryptedText text="Vue/Nuxt" v-bind="animProps" /></NuxtLink>
-        <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Svelte/SvelteKit" v-bind="animProps" /></NuxtLink>
-        <DecryptedText :text="$t('resume.webdev.serverside')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-projects" to="/links/2"><DecryptedText text="Node.js" v-bind="animProps" /></NuxtLink>
-        <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C++" v-bind="animProps" /></NuxtLink>
-        <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
-        <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=")." v-bind="animProps" />
+        <template v-if="contentReady.webdev">
+          <DecryptedText :text="$t('resume.webdev.description')" v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-react" to="/links/3"><DecryptedText text="React/Next" v-bind="animProps" /></NuxtLink>
+          <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-vue" to="/links/3"><DecryptedText text="Vue/Nuxt" v-bind="animProps" /></NuxtLink>
+          <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Svelte/SvelteKit" v-bind="animProps" /></NuxtLink>
+          <DecryptedText :text="$t('resume.webdev.serverside')" v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-projects" to="/links/2"><DecryptedText text="Node.js" v-bind="animProps" /></NuxtLink>
+          <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C++" v-bind="animProps" /></NuxtLink>
+          <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
+          <DecryptedText :text="$t('resume.webdev.and')" v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
+          <DecryptedText text=")." v-bind="animProps" />
+        </template>
       </p>
     </div>
 
@@ -107,11 +130,13 @@ const animProps = {
         {{ $t('resume.linux.title') }}
       </a>
       <p v-if="visibility.linux" class="resumelinux">
-        <DecryptedText :text="$t('resume.linux.description')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-linux" to="/links/7"><DecryptedText text="Linux" v-bind="animProps" /></NuxtLink>
-        <DecryptedText :text="$t('resume.linux.comfortable')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color" to="/links/7"><DecryptedText :text="$t('resume.linux.shellscripting')" v-bind="animProps" /></NuxtLink>
-        <DecryptedText :text="$t('resume.linux.optimization')" v-bind="animProps" />
+        <template v-if="contentReady.linux">
+          <DecryptedText :text="$t('resume.linux.description')" v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-linux" to="/links/7"><DecryptedText text="Linux" v-bind="animProps" /></NuxtLink>
+          <DecryptedText :text="$t('resume.linux.comfortable')" v-bind="animProps" />
+          <NuxtLink class="txtanim link-color" to="/links/7"><DecryptedText :text="$t('resume.linux.shellscripting')" v-bind="animProps" /></NuxtLink>
+          <DecryptedText :text="$t('resume.linux.optimization')" v-bind="animProps" />
+        </template>
       </p>
     </div>
 
@@ -123,10 +148,12 @@ const animProps = {
         {{ $t('resume.education.title') }}
       </a>
       <p v-if="visibility.education" class="resumeedu">
-        <DecryptedText
-          :text="$t('resume.education.description')"
-          v-bind="animProps"
-        />
+        <template v-if="contentReady.education">
+          <DecryptedText
+            :text="$t('resume.education.description')"
+            v-bind="animProps"
+          />
+        </template>
       </p>
     </div>
 
@@ -138,13 +165,15 @@ const animProps = {
         {{ $t('resume.projects.title') }}
       </a>
       <p v-if="visibility.projects" class="resumeproj">
-        <NuxtLink class="txtanim link-color-projects" to="/links/1"><DecryptedText text="GitHub" v-bind="animProps" /></NuxtLink>
-        <NuxtLink class="txtanim link-color-js" to="/links/2"><DecryptedText text="JavaScript" v-bind="animProps" /></NuxtLink>
-        <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
-        <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C++" v-bind="animProps" /></NuxtLink>
-        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
-        <NuxtLink class="txtanim link-color-react" to="/links/3"><DecryptedText text="React" v-bind="animProps" /></NuxtLink>
-        <NuxtLink class="txtanim link-color-vue" to="/links/3"><DecryptedText text="Vue" v-bind="animProps" /></NuxtLink>
+        <template v-if="contentReady.projects">
+          <NuxtLink class="txtanim link-color-projects" to="/links/1"><DecryptedText text="GitHub" v-bind="animProps" /></NuxtLink>
+          <NuxtLink class="txtanim link-color-js" to="/links/2"><DecryptedText text="JavaScript" v-bind="animProps" /></NuxtLink>
+          <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
+          <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C++" v-bind="animProps" /></NuxtLink>
+          <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
+          <NuxtLink class="txtanim link-color-react" to="/links/3"><DecryptedText text="React" v-bind="animProps" /></NuxtLink>
+          <NuxtLink class="txtanim link-color-vue" to="/links/3"><DecryptedText text="Vue" v-bind="animProps" /></NuxtLink>
+        </template>
       </p>
     </div>
 
@@ -156,6 +185,7 @@ const animProps = {
         {{ $t('resume.skills.title') }}
       </a>
       <div v-if="visibility.skills" class="skill-categories">
+        <template v-if="contentReady.skills">
         <!-- Programming Languages -->
         <div class="skill-cat">
           <a class="txtanim link-color skill-cat-label" @click="toggleCat('languages')">
@@ -265,6 +295,7 @@ const animProps = {
             <DecryptedText text="Portuguese (Native), English (Fluent), Spanish (Proficient), Italian (Basic), Russian (Learning)" v-bind="animProps" />
           </p>
         </div>
+        </template>
       </div>
     </div>
 
@@ -276,10 +307,12 @@ const animProps = {
         {{ $t('resume.competencies.title') }}
       </a>
       <p v-if="visibility.competencies" class="resumecompetencies">
-        <DecryptedText
-          :text="$t('resume.competencies.description')"
-          v-bind="animProps"
-        />
+        <template v-if="contentReady.competencies">
+          <DecryptedText
+            :text="$t('resume.competencies.description')"
+            v-bind="animProps"
+          />
+        </template>
       </p>
     </div>
 
@@ -291,19 +324,21 @@ const animProps = {
         {{ $t('resume.interests.title') }}
       </a>
       <p v-if="visibility.interests" class="resumeinterests">
-        <DecryptedText :text="$t('resume.interests.intro')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C++" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Go" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", and " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-js" to="/links/2"><DecryptedText text="JavaScript" v-bind="animProps" /></NuxtLink>
-        <DecryptedText :text="$t('resume.interests.android')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-linux" to="/links/7"><DecryptedText text="Linux" v-bind="animProps" /></NuxtLink>
-        <DecryptedText :text="$t('resume.interests.music')" v-bind="animProps" />
+        <template v-if="contentReady.interests">
+          <DecryptedText :text="$t('resume.interests.intro')" v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C++" v-bind="animProps" /></NuxtLink>
+          <DecryptedText text=", " v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
+          <DecryptedText text=", " v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
+          <DecryptedText text=", " v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Go" v-bind="animProps" /></NuxtLink>
+          <DecryptedText text=", and " v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-js" to="/links/2"><DecryptedText text="JavaScript" v-bind="animProps" /></NuxtLink>
+          <DecryptedText :text="$t('resume.interests.android')" v-bind="animProps" />
+          <NuxtLink class="txtanim link-color-linux" to="/links/7"><DecryptedText text="Linux" v-bind="animProps" /></NuxtLink>
+          <DecryptedText :text="$t('resume.interests.music')" v-bind="animProps" />
+        </template>
       </p>
     </div>
 
