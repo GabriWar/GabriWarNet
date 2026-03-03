@@ -77,6 +77,10 @@ const BAYER = new Uint8Array([
 ])
 
 // ── renderer ─────────────────────────────────────────────────────────
+let cachedImgData: ImageData | null = null
+let cachedW = 0
+let cachedH = 0
+
 export function renderPattern(
   ctx: CanvasRenderingContext2D,
   fn: PatternFn,
@@ -86,8 +90,12 @@ export function renderPattern(
   dither: boolean,
   invert: boolean,
 ) {
-  const imgData = ctx.createImageData(w, h)
-  const data = imgData.data
+  if (!cachedImgData || cachedW !== w || cachedH !== h) {
+    cachedImgData = ctx.createImageData(w, h)
+    cachedW = w
+    cachedH = h
+  }
+  const data = cachedImgData.data
 
   if (dither) {
     for (let y = 0; y < h; y++) {
@@ -118,5 +126,5 @@ export function renderPattern(
     }
   }
 
-  ctx.putImageData(imgData, 0, 0)
+  ctx.putImageData(cachedImgData, 0, 0)
 }

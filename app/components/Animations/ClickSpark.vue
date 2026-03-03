@@ -102,6 +102,11 @@ const handleClick = (e: MouseEvent) => {
   })
 
   sparks.value.push(...newSparks)
+
+  // Start the draw loop if not already running
+  if (!animationId.value) {
+    animationId.value = requestAnimationFrame(draw)
+  }
 }
 
 const draw = (timestamp: number) => {
@@ -142,7 +147,12 @@ const draw = (timestamp: number) => {
     return true
   })
 
-  animationId.value = requestAnimationFrame(draw)
+  // Only keep looping while there are active sparks
+  if (sparks.value.length > 0) {
+    animationId.value = requestAnimationFrame(draw)
+  } else {
+    animationId.value = null
+  }
 }
 
 const resizeCanvas = () => {
@@ -168,7 +178,6 @@ const handleResize = () => {
 onMounted(() => {
   window.addEventListener('resize', handleResize)
   resizeCanvas()
-  animationId.value = requestAnimationFrame(draw)
 })
 
 onUnmounted(() => {
@@ -191,10 +200,10 @@ watch(
     () => props.extraScale
   ],
   () => {
-    if (animationId.value) {
-      cancelAnimationFrame(animationId.value)
+    // Only restart loop if there are active sparks
+    if (sparks.value.length > 0 && !animationId.value) {
+      animationId.value = requestAnimationFrame(draw)
     }
-    animationId.value = requestAnimationFrame(draw)
   }
 )
 </script>

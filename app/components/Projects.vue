@@ -61,33 +61,34 @@ const projects = computed(() => [
 ])
 
 const sectionRefs = ref<HTMLElement[]>([])
-let rafId: number
+let rafId = 0
+let scrollTicking = false
 
 const updateAnimations = () => {
   const windowHeight = window.innerHeight
-  
+
   sectionRefs.value.forEach((el) => {
     if (!el) return
-    
+
     const rect = el.getBoundingClientRect()
-    
+
     // Entry animation (bottom up)
     const entryStart = windowHeight
     const entryEnd = windowHeight * 0.8
-    
+
     // Exit animation (top out)
     const exitStart = windowHeight * 0.2
     const exitEnd = 0
-    
+
     let opacity = 1
     let transformY = 0
     let scale = 1
-    
+
     if (rect.top > entryEnd) {
       // Entering from bottom
       let progress = (entryStart - rect.top) / (entryStart - entryEnd)
       progress = Math.min(Math.max(progress, 0), 1)
-      
+
       opacity = progress
       transformY = 100 * (1 - progress)
       scale = 0.9 + (0.1 * progress)
@@ -95,18 +96,25 @@ const updateAnimations = () => {
       // Exiting to top
       let progress = (rect.bottom - exitEnd) / (exitStart - exitEnd)
       progress = Math.min(Math.max(progress, 0), 1)
-      
+
       opacity = progress
       transformY = -100 * (1 - progress)
       scale = 0.9 + (0.1 * progress)
     }
-    
+
     // Apply styles directly based on scroll position
     el.style.opacity = opacity.toString()
     el.style.transform = `translateY(${transformY}px) scale(${scale})`
   })
-  
-  rafId = requestAnimationFrame(updateAnimations)
+
+  scrollTicking = false
+}
+
+const onScroll = () => {
+  if (!scrollTicking) {
+    scrollTicking = true
+    rafId = requestAnimationFrame(updateAnimations)
+  }
 }
 
 const getSkillClass = (skill: string) => {
@@ -141,10 +149,13 @@ const getSkillClass = (skill: string) => {
 }
 
 onMounted(() => {
+  // Initial position pass
   updateAnimations()
+  window.addEventListener('scroll', onScroll, { passive: true })
 })
 
 onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
   if (rafId) cancelAnimationFrame(rafId)
 })
 </script>

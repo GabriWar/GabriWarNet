@@ -4,66 +4,27 @@
 
 <script setup lang="ts">
 const route = useRoute()
-const link = route.params.link
+const link = route.params.link as string
 
-if (link === '1') {
-  // github
-  navigateTo('https://github.com/GabriWar/', {
-    external: true
-  })
-}
-if (link === '2') {
-  // js
-  navigateTo(
-    'https://github.com/GabriWar?tab=repositories&q=&type=source&language=javascript&sort=',
-    {
-      external: true
-    }
-  )
+const ghLang = (lang: string) =>
+  `https://github.com/GabriWar?tab=repositories&q=&type=source&language=${lang}&sort=`
+
+const links: Record<string, string> = {
+  '1': 'https://github.com/GabriWar/',
+  '2': ghLang('javascript'),
+  '3': ghLang('vue'),
+  '4': ghLang('c%2B%2B'),
+  '5': ghLang('rust'),
+  '6': ghLang('python'),
+  '7': 'https://github.com/GabriWar/LARBS',
+  '8': ghLang('go'),
+  '9': ghLang('typescript'),
+  '10': ghLang('shell'),
+  '11': ghLang('c'),
+  '12': ghLang('lua'),
 }
 
-if (link === '3') {
-  // vue
-  navigateTo(
-    'https://github.com/GabriWar?tab=repositories&q=&type=source&language=vue&sort=',
-    {
-      external: true
-    }
-  )
-}
-if (link === '4') {
-  // cpp
-  navigateTo(
-    'https://github.com/GabriWar?tab=repositories&q=&type=source&language=c%2B%2B&sort=',
-    {
-      external: true
-    }
-  )
-}
-if (link === '5') {
-  // rust
-  navigateTo(
-    'https://github.com/GabriWar?tab=repositories&q=&type=source&language=rust&sort=',
-    {
-      external: true
-    }
-  )
-}
-if (link === '6') {
-  // python
-  navigateTo(
-    'https://github.com/GabriWar?tab=repositories&q=&type=source&language=python&sort=',
-    {
-      external: true
-    }
-  )
-}
-if (link === '7') {
-  // linux
-  navigateTo('https://github.com/GabriWar/LARBS', {
-    external: true
-  })
+if (links[link]) {
+  navigateTo(links[link], { external: true })
 }
 </script>
-
-<style scoped></style>

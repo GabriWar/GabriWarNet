@@ -26,9 +26,15 @@ let patternFn = patterns[patternNames[0]]
 let time = 0
 let lastFrame = 0
 let rafId = 0
+const TARGET_DT = 1000 / 30 // 30 fps cap
 
 function frame(now: number) {
-  const dt = lastFrame ? (now - lastFrame) / 1000 : 0.016
+  rafId = requestAnimationFrame(frame)
+
+  const elapsed = now - lastFrame
+  if (elapsed < TARGET_DT) return
+
+  const dt = lastFrame ? elapsed / 1000 : 0.016
   lastFrame = now
   time += dt * props.speed
 
@@ -37,8 +43,6 @@ function frame(now: number) {
     const ctx = canvas.getContext('2d')
     if (ctx) renderPattern(ctx, patternFn, props.width, props.height, time, true, false)
   }
-
-  rafId = requestAnimationFrame(frame)
 }
 
 onMounted(() => {

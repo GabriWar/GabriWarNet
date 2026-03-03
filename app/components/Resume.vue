@@ -14,6 +14,27 @@ const visibility = reactive({
   interests: false
 })
 
+const skillCats = reactive({
+  languages: false,
+  frontend: false,
+  backend: false,
+  cloud: false,
+  iot: false,
+  ai: false,
+  realtime: false,
+  devops: false,
+  specialized: false,
+  langs: false,
+})
+
+const toggleCat = (cat: keyof typeof skillCats) => {
+  const wasOpen = skillCats[cat]
+  Object.keys(skillCats).forEach(key => {
+    skillCats[key as keyof typeof skillCats] = false
+  })
+  skillCats[cat] = !wasOpen
+}
+
 const toggle = (section: keyof typeof visibility) => {
   const wasOpen = visibility[section]
   // Close all sections first
@@ -134,45 +155,117 @@ const animProps = {
       >
         {{ $t('resume.skills.title') }}
       </a>
-      <p v-if="visibility.skills" class="resumeskills">
-        <DecryptedText :text="$t('resume.skills.intro')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-py" to="/links/6"><DecryptedText text="Python" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-js" to="/links/2"><DecryptedText text="JavaScript/TypeScript" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Rust" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-rust" to="/links/5"><DecryptedText text="Go" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-cpp" to="/links/4"><DecryptedText text="C/C++" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", C#, Java, PHP, Assembly, Bash" v-bind="animProps" />
-        <DecryptedText :text="$t('resume.skills.frontend')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-react" to="/links/3"><DecryptedText text="React" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-react" to="/links/3"><DecryptedText text="Angular" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-vue" to="/links/3"><DecryptedText text="Vue" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", Modern JavaScript frameworks, Component libraries, Responsive design" v-bind="animProps" />
-        <DecryptedText :text="$t('resume.skills.backend')" v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-projects" to="/links/2"><DecryptedText text="Node.js" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=", SQL (MySQL, Postgres, MSSQL) & NoSQL, Bun, REST APIs" v-bind="animProps" />
-        <DecryptedText :text="$t('resume.skills.cloud')" v-bind="animProps" />
-        <DecryptedText text="Google Cloud Platform, Docker, Nginx, Container orchestration, Minio" v-bind="animProps" />
-        <DecryptedText :text="$t('resume.skills.iot')" v-bind="animProps" />
-        <DecryptedText text="Modbus TCP/IP, Industrial automation protocols, PLC programming, Real-time telemetry systems" v-bind="animProps" />
-        <DecryptedText :text="$t('resume.skills.ai')" v-bind="animProps" />
-        <DecryptedText text="Large Language Models, RAG architecture, Model deployment, Computer vision" v-bind="animProps" />
-        <DecryptedText :text="$t('resume.skills.realtime')" v-bind="animProps" />
-        <DecryptedText text="WebSockets, Real-time data synchronization, Messaging platforms integration" v-bind="animProps" />
-        <DecryptedText :text="$t('resume.skills.devops')" v-bind="animProps" />
-        <DecryptedText text="Git, " v-bind="animProps" />
-        <NuxtLink class="txtanim link-color-linux" to="/links/7"><DecryptedText text="Linux" v-bind="animProps" /></NuxtLink>
-        <DecryptedText text=" (Arch, Debian, Ubuntu, Kali), System automation, CI/CD" v-bind="animProps" />
-        <DecryptedText :text="$t('resume.skills.specialized')" v-bind="animProps" />
-        <DecryptedText text="Enterprise platform architecture, Digital signatures integration, Document generation, Visual workflow builders" v-bind="animProps" />
-        <DecryptedText :text="$t('resume.skills.langs')" v-bind="animProps" />
-        <DecryptedText text="Portuguese (Native), English (Fluent), Spanish (Proficient), Italian (Basic), Russian (Learning)" v-bind="animProps" />
-      </p>
+      <div v-if="visibility.skills" class="skill-categories">
+        <!-- Programming Languages -->
+        <div class="skill-cat">
+          <a class="txtanim link-color skill-cat-label" @click="toggleCat('languages')">
+            <span class="skill-cat-arrow" :class="{ open: skillCats.languages }">&#9656;</span>
+            <DecryptedText :text="$t('resume.skills.languages')" v-bind="animProps" />
+          </a>
+          <p v-if="skillCats.languages" class="skill-cat-items">
+            <a class="txtanim link-color-py" href="https://python.org" target="_blank"><DecryptedText text="Python" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-js" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><DecryptedText text="JavaScript" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-js" href="https://typescriptlang.org" target="_blank"><DecryptedText text="TypeScript" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-rust" href="https://rust-lang.org" target="_blank"><DecryptedText text="Rust" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-react" href="https://go.dev" target="_blank"><DecryptedText text="Go" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-cpp" href="https://en.cppreference.com/w/c" target="_blank"><DecryptedText text="C" v-bind="animProps" /></a><DecryptedText text="/" v-bind="animProps" /><a class="txtanim link-color-cpp" href="https://isocpp.org" target="_blank"><DecryptedText text="C++" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-cpp" href="https://dotnet.microsoft.com/languages/csharp" target="_blank"><DecryptedText text="C#" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-rust" href="https://www.java.com" target="_blank"><DecryptedText text="Java" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-web" href="https://www.php.net" target="_blank"><DecryptedText text="PHP" v-bind="animProps" /></a><DecryptedText text=", Assembly, " v-bind="animProps" /><a class="txtanim link-color-linux" href="https://www.gnu.org/software/bash/" target="_blank"><DecryptedText text="Bash" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-edu" href="https://www.lua.org" target="_blank"><DecryptedText text="Lua" v-bind="animProps" /></a>
+          </p>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skill-cat">
+          <a class="txtanim link-color-web skill-cat-label" @click="toggleCat('frontend')">
+            <span class="skill-cat-arrow" :class="{ open: skillCats.frontend }">&#9656;</span>
+            <DecryptedText :text="$t('resume.skills.frontend')" v-bind="animProps" />
+          </a>
+          <p v-if="skillCats.frontend" class="skill-cat-items">
+            <a class="txtanim link-color-react" href="https://react.dev" target="_blank"><DecryptedText text="React" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-react" href="https://angular.dev" target="_blank"><DecryptedText text="Angular" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-vue" href="https://vuejs.org" target="_blank"><DecryptedText text="Vue" v-bind="animProps" /></a><DecryptedText text=", Component libraries, Responsive design" v-bind="animProps" />
+          </p>
+        </div>
+
+        <!-- Backend & Databases -->
+        <div class="skill-cat">
+          <a class="txtanim link-color-projects skill-cat-label" @click="toggleCat('backend')">
+            <span class="skill-cat-arrow" :class="{ open: skillCats.backend }">&#9656;</span>
+            <DecryptedText :text="$t('resume.skills.backend')" v-bind="animProps" />
+          </a>
+          <p v-if="skillCats.backend" class="skill-cat-items">
+            <a class="txtanim link-color-projects" href="https://nodejs.org" target="_blank"><DecryptedText text="Node.js" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-web" href="https://bun.sh" target="_blank"><DecryptedText text="Bun" v-bind="animProps" /></a><DecryptedText text=", REST APIs, " v-bind="animProps" /><a class="txtanim link-color-web" href="https://www.mysql.com" target="_blank"><DecryptedText text="MySQL" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-cpp" href="https://www.postgresql.org" target="_blank"><DecryptedText text="Postgres" v-bind="animProps" /></a><DecryptedText text=", MSSQL, NoSQL" v-bind="animProps" />
+          </p>
+        </div>
+
+        <!-- Cloud & Infrastructure -->
+        <div class="skill-cat">
+          <a class="txtanim link-color-react skill-cat-label" @click="toggleCat('cloud')">
+            <span class="skill-cat-arrow" :class="{ open: skillCats.cloud }">&#9656;</span>
+            <DecryptedText :text="$t('resume.skills.cloud')" v-bind="animProps" />
+          </a>
+          <p v-if="skillCats.cloud" class="skill-cat-items">
+            <a class="txtanim link-color-react" href="https://cloud.google.com" target="_blank"><DecryptedText text="Google Cloud Platform" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-web" href="https://www.docker.com" target="_blank"><DecryptedText text="Docker" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-projects" href="https://nginx.org" target="_blank"><DecryptedText text="Nginx" v-bind="animProps" /></a><DecryptedText text=", Container orchestration, " v-bind="animProps" /><a class="txtanim link-color-rust" href="https://min.io" target="_blank"><DecryptedText text="Minio" v-bind="animProps" /></a>
+          </p>
+        </div>
+
+        <!-- Industrial IoT & SCADA -->
+        <div class="skill-cat">
+          <a class="txtanim link-color-rust skill-cat-label" @click="toggleCat('iot')">
+            <span class="skill-cat-arrow" :class="{ open: skillCats.iot }">&#9656;</span>
+            <DecryptedText :text="$t('resume.skills.iot')" v-bind="animProps" />
+          </a>
+          <p v-if="skillCats.iot" class="skill-cat-items">
+            <DecryptedText text="Modbus TCP/IP, Industrial automation protocols, PLC programming, Real-time telemetry systems" v-bind="animProps" />
+          </p>
+        </div>
+
+        <!-- AI / ML -->
+        <div class="skill-cat">
+          <a class="txtanim link-color-py skill-cat-label" @click="toggleCat('ai')">
+            <span class="skill-cat-arrow" :class="{ open: skillCats.ai }">&#9656;</span>
+            <DecryptedText :text="$t('resume.skills.ai')" v-bind="animProps" />
+          </a>
+          <p v-if="skillCats.ai" class="skill-cat-items">
+            <DecryptedText text="Large Language Models, RAG architecture, Model deployment, Computer vision" v-bind="animProps" />
+          </p>
+        </div>
+
+        <!-- Real-time Systems -->
+        <div class="skill-cat">
+          <a class="txtanim link-color-js skill-cat-label" @click="toggleCat('realtime')">
+            <span class="skill-cat-arrow" :class="{ open: skillCats.realtime }">&#9656;</span>
+            <DecryptedText :text="$t('resume.skills.realtime')" v-bind="animProps" />
+          </a>
+          <p v-if="skillCats.realtime" class="skill-cat-items">
+            <DecryptedText text="WebSockets, Real-time data synchronization, Messaging platforms integration" v-bind="animProps" />
+          </p>
+        </div>
+
+        <!-- DevOps -->
+        <div class="skill-cat">
+          <a class="txtanim link-color-linux skill-cat-label" @click="toggleCat('devops')">
+            <span class="skill-cat-arrow" :class="{ open: skillCats.devops }">&#9656;</span>
+            <DecryptedText :text="$t('resume.skills.devops')" v-bind="animProps" />
+          </a>
+          <p v-if="skillCats.devops" class="skill-cat-items">
+            <a class="txtanim link-color-web" href="https://git-scm.com" target="_blank"><DecryptedText text="Git" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-linux" href="https://kernel.org" target="_blank"><DecryptedText text="Linux" v-bind="animProps" /></a><DecryptedText text=" (Arch, Debian, Ubuntu, Kali), System automation, CI/CD" v-bind="animProps" />
+          </p>
+        </div>
+
+        <!-- Specialized -->
+        <div class="skill-cat">
+          <a class="txtanim link-color-cpp skill-cat-label" @click="toggleCat('specialized')">
+            <span class="skill-cat-arrow" :class="{ open: skillCats.specialized }">&#9656;</span>
+            <DecryptedText :text="$t('resume.skills.specialized')" v-bind="animProps" />
+          </a>
+          <p v-if="skillCats.specialized" class="skill-cat-items">
+            <DecryptedText text="Enterprise platform architecture, Digital signatures integration, Document generation, Visual workflow builders" v-bind="animProps" />
+          </p>
+        </div>
+
+        <!-- Languages -->
+        <div class="skill-cat">
+          <a class="txtanim link-color-edu skill-cat-label" @click="toggleCat('langs')">
+            <span class="skill-cat-arrow" :class="{ open: skillCats.langs }">&#9656;</span>
+            <DecryptedText :text="$t('resume.skills.langs')" v-bind="animProps" />
+          </a>
+          <p v-if="skillCats.langs" class="skill-cat-items">
+            <DecryptedText text="Portuguese (Native), English (Fluent), Spanish (Proficient), Italian (Basic), Russian (Learning)" v-bind="animProps" />
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="resume-section" data-visible="1">
@@ -329,6 +422,47 @@ const animProps = {
 }
 
 .resume-section a {
+  pointer-events: auto;
+}
+
+/* ── Skill categories ──────────────────────────────── */
+.skill-categories {
+  margin-top: var(--spacing-sm);
+  list-style: none;
+  padding: 0;
+}
+
+.skill-cat {
+  pointer-events: auto;
+}
+
+.skill-cat-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  line-height: 1.6;
+}
+
+.skill-cat-arrow {
+  display: inline-block;
+  font-size: 0.65em;
+  transition: transform 0.2s ease;
+  color: var(--color-text-tertiary);
+}
+
+.skill-cat-arrow.open {
+  transform: rotate(90deg);
+}
+
+.skill-cat-items {
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-sm);
+  padding-left: 1em;
+}
+
+.skill-cat-items a {
   pointer-events: auto;
 }
 

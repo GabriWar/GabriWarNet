@@ -205,25 +205,29 @@ class AsciiFilter {
   asciify(ctx: CanvasRenderingContext2D, w: number, h: number) {
     if (w && h) {
       const imgData = ctx.getImageData(0, 0, w, h).data
-      let str = ''
+      const len = this.charset.length - 1
+      const inv = this.invert
+      const cs = this.charset
+      // Pre-allocate buffer: w chars per row + newline, h rows
+      const buf = new Array(h)
       for (let y = 0; y < h; y++) {
+        const rowOffset = y * w * 4
+        const row = new Array(w)
         for (let x = 0; x < w; x++) {
-          const i = x * 4 + y * 4 * w
-          const [r, g, b, a] = [imgData[i], imgData[i + 1], imgData[i + 2], imgData[i + 3]]
-
+          const i = rowOffset + x * 4
+          const a = imgData[i + 3]!
           if (a === 0) {
-            str += ' '
+            row[x] = ' '
             continue
           }
-
-          let gray = (0.3 * r + 0.6 * g + 0.1 * b) / 255
-          let idx = Math.floor((1 - gray) * (this.charset.length - 1))
-          if (this.invert) idx = this.charset.length - idx - 1
-          str += this.charset[idx]
+          const gray = (0.3 * imgData[i]! + 0.6 * imgData[i + 1]! + 0.1 * imgData[i + 2]!) / 255
+          let idx = (1 - gray) * len | 0
+          if (inv) idx = len - idx
+          row[x] = cs[idx]
         }
-        str += '\n'
+        buf[y] = row.join('')
       }
-      this.pre.innerHTML = str
+      this.pre.textContent = buf.join('\n')
     }
   }
 
@@ -428,10 +432,8 @@ class CanvAscii {
   }
 
   render() {
-    const time = new Date().getTime() * 0.001
+    const time = performance.now() * 0.001
 
-    this.textCanvas.render()
-    this.texture.needsUpdate = true
     ;(this.mesh.material as THREE.ShaderMaterial).uniforms.uTime.value = Math.sin(time)
 
     this.updateRotation()

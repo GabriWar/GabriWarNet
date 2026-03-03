@@ -43,16 +43,16 @@
     },
     "skills": {
       "title": "Skills",
-      "intro": "Programming Languages: ",
-      "backend": ". Backend & Databases: ",
-      "frontend": ". Frontend Development: ",
-      "cloud": ". Cloud & Infrastructure: ",
-      "iot": ". Industrial IoT & SCADA: ",
-      "ai": ". AI/ML: ",
-      "realtime": ". Real-time Systems: ",
-      "devops": ". DevOps: ",
-      "specialized": ". Specialized Skills: ",
-      "langs": ". Languages: "
+      "languages": "Programming Languages",
+      "frontend": "Frontend",
+      "backend": "Backend & Databases",
+      "cloud": "Cloud & Infrastructure",
+      "iot": "Industrial IoT & SCADA",
+      "ai": "AI / ML",
+      "realtime": "Real-time Systems",
+      "devops": "DevOps",
+      "specialized": "Specialized",
+      "langs": "Languages"
     },
     "competencies": {
       "title": "Competencies",
