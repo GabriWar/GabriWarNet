@@ -215,7 +215,7 @@ const animProps = {
             <DecryptedText :text="$t('resume.skills.backend')" v-bind="animProps" />
           </a>
           <p v-if="skillCats.backend" class="skill-cat-items">
-            <a class="txtanim link-color-projects" href="https://nodejs.org" target="_blank"><DecryptedText text="Node.js" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-web" href="https://bun.sh" target="_blank"><DecryptedText text="Bun" v-bind="animProps" /></a><DecryptedText text=", REST APIs, " v-bind="animProps" /><a class="txtanim link-color-web" href="https://www.mysql.com" target="_blank"><DecryptedText text="MySQL" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-cpp" href="https://www.postgresql.org" target="_blank"><DecryptedText text="Postgres" v-bind="animProps" /></a><DecryptedText text=", MSSQL, NoSQL" v-bind="animProps" />
+            <a class="txtanim link-color-projects" href="https://nodejs.org" target="_blank"><DecryptedText text="Node.js" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-web" href="https://bun.sh" target="_blank"><DecryptedText text="Bun" v-bind="animProps" /></a><DecryptedText text=", REST APIs, " v-bind="animProps" /><a class="txtanim link-color-web" href="https://www.mysql.com" target="_blank"><DecryptedText text="MySQL" v-bind="animProps" /></a><DecryptedText text=", " v-bind="animProps" /><a class="txtanim link-color-cpp" href="https://www.postgresql.org" target="_blank"><DecryptedText text="Postgres" v-bind="animProps" /></a><DecryptedText text=", MSSQL, NoSQL, " v-bind="animProps" /><a class="txtanim link-color-rust" href="https://tauri.app" target="_blank"><DecryptedText text="Tauri" v-bind="animProps" /></a>
           </p>
         </div>
 
@@ -237,7 +237,7 @@ const animProps = {
             <DecryptedText :text="$t('resume.skills.iot')" v-bind="animProps" />
           </a>
           <p v-if="skillCats.iot" class="skill-cat-items">
-            <DecryptedText text="Modbus TCP/IP, Industrial automation protocols, PLC programming, Real-time telemetry systems" v-bind="animProps" />
+            <a class="txtanim link-color-projects" href="https://www.openchargealliance.org" target="_blank"><DecryptedText text="OCPP 1.6J" v-bind="animProps" /></a><DecryptedText text=", EV charging infrastructure (CSMS + CP Simulator), Modbus TCP/IP, Industrial automation protocols, PLC programming, Real-time telemetry systems" v-bind="animProps" />
           </p>
         </div>
 
